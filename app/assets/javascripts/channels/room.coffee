@@ -7,6 +7,13 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
+     $('#messages').append data['message']
 
-  speak: ->
-    @perform 'speak'
+  speak: (message) ->
+    @perform 'speak', message: message
+
+$(document).on 'keypress', (e) ->
+  if e.keyCode == 13
+    App.room.speak(e.target.value)
+    e.target.value = ''
+    e.preventDefault()
