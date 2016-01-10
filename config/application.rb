@@ -11,5 +11,13 @@ module ChatAppRails5
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    # config.generators do |g|
+    config.generators do |g|
+        g.template_engine      false
+        g.test_framework       false
+        g.helper               false
+        g.stylesheets          false
+        g.javascripts          false
+    end
   end
 end
